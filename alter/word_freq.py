@@ -86,7 +86,7 @@ def _generate_summary(sentences: list, sentence_score: dict,
     return summary
 
 
-def run_summarization(text: str, threshold: float) -> str:
+def run_summarization(text: str) -> str:
     """
     Run the whole process
     :param text:

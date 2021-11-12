@@ -3,9 +3,11 @@ import transformers
 from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
 
 
+
 def t5_summary(INCONTEXT: str) -> str:
     """
     Summary of T5 model.
+    
     """
     # Load T5 model
     model = AutoModelForSeq2SeqLM.from_pretrained('t5-base')

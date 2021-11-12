@@ -7,40 +7,35 @@ from alter.tf_idf import run_summarization as tf_idf_summarization
 from alter.word_freq import run_summarization as run_summarization_wf
 
 if __name__ == "__main__":
+    nltk.download('punkt')
+    nltk.download('stopwords')
     st.title("Text Summarization")
     st.markdown("""
     #### Summary
-    This app is a text summarization tool. It can summarize a text using the T5 model and the TF-IDF algorithm.
+    This app is a text summarization tool using the T5-Transformer model.
     """)
-    st.markdown("""
-    #### Word Frequency
-    This app is a word frequency tool. It can calculate the frequency of words in a text.
-    """)
-    st.markdown("""
-    #### T5
-    This app is a text summarization tool. It can summarize a text using the T5 model.
-    """)
-    nltk.download('punkt')
-    nltk.download('stopwords')
 
-    text = st.text_area("Enter your text here")
-    if st.button("Summarize"):
-        if text:
+    st.markdown("""
+    #### Usage
+    1. Paste your text in the text area below.
+    2. Select the summarization method from the dropdown menu.
+    3. Click on the button to get your summary.
+    """)
+
+    text = st.text_area("Paste your text here")
+    summarization_method = st.selectbox(
+        "Select summarization method",
+        ["T5-Transformer", "TF-IDF", "Word Frequency"])
+
+    if st.button("Get Summary"):
+        if summarization_method == "T5-Transformer":
             summary = t5_summary(text)
-            st.subheader("Using T5")
-            st.success(summary)
+        elif summarization_method == "TF-IDF":
+            summary = tf_idf_summarization(text)
+        elif summarization_method == "Word Frequency":
+            summary = run_summarization_wf(text)
+        st.success(summary)
+        st.markdown("---")
 
-    if st.button("Word Frequency"):
-        if text:
-            freq = run_summarization_wf(text, 50)
-            st.subheader("Word Frequency")
-            st.success(freq)
-
-    if st.button("TF-IDF"):
-        if text:
-            summary = tf_idf_summarization(text, 50)
-            st.subheader("Using TF-IDF")
-            st.success(summary)
-
-    else:
-        st.success("Please enter some text to summarize.")
+        st.subheader(summarization_method)
+        st.write(summary)
