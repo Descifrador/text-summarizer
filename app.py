@@ -2,9 +2,9 @@
 import streamlit as st
 import nltk
 
-from t5_api import t5_summary
-from tf_idf import run_summarization as tf_idf_summarization
-from word_freq import run_summarization as run_summarization_wf
+from alter.t5_api import t5_summary
+from alter.tf_idf import run_summarization as tf_idf_summarization
+from alter.word_freq import run_summarization as run_summarization_wf
 
 if __name__ == "__main__":
     st.title("Text Summarization")
