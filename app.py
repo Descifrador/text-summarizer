@@ -32,13 +32,13 @@ if __name__ == "__main__":
 
     if st.button("Word Frequency"):
         if text:
-            freq = run_summarization_wf(text)
+            freq = run_summarization_wf(text, 50)
             st.subheader("Word Frequency")
             st.success(freq)
 
     if st.button("TF-IDF"):
         if text:
-            summary = tf_idf_summarization(text)
+            summary = tf_idf_summarization(text, 50)
             st.subheader("Using TF-IDF")
             st.success(summary)
 
