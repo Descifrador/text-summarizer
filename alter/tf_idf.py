@@ -103,7 +103,7 @@ def _create_idf_matrix(freq_matrix: dict, doc_per_words: dict,
             if sentence in idf_table:
                 continue
             idf_table[sentence] = math.log10(total_documents /
-                                             doc_per_words[word])
+                                             doc_per_words[sentence])
         idf_matrix[word] = idf_table
     return idf_matrix
 
