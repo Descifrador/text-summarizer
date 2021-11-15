@@ -10,10 +10,6 @@ if __name__ == "__main__":
     nltk.download('punkt')
     nltk.download('stopwords')
     st.title("Text Summarization")
-    st.markdown("""
-    #### Summary
-    This app is a text summarization tool using the T5-Transformer model.
-    """)
 
     text = st.text_area("Paste your text here")
     summarization_method = st.selectbox(
@@ -29,3 +25,7 @@ if __name__ == "__main__":
             summary = run_summarization_wf(text)
         st.success(summary)
         st.markdown("---")
+
+        st.markdown(
+            "Created by Aman Matta, Avinal Kumar, Harsimranjeet Saini and Pooja Nehra"
+        )
